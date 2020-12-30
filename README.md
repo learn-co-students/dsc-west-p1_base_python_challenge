@@ -25,7 +25,6 @@ The start and end community area number are assigned to two variables below: `tr
 Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore. 
 
 
-
 ```python
 trip1_st_end_cn = trip1_scan + '_' + trip1_ecan
 trip1_st_end_cn
@@ -43,12 +42,10 @@ trip1_st_end_cn
 ## Task 2:
 Two string variables are defined below named `trip1_dist` and `trip1_time`. 
 
-
   - First: convert these strings to integers or floats. 
   - Second: the original units are in meters and seconds. Make a new variable, `trip_mph` which represents speed in mph.  
   
 > Hint: to convert meters to miles, divide by 1609.
-
 
 
 ```python
