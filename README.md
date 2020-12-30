@@ -544,32 +544,3 @@ Whether you used the data list or trips_dictionary, the output should be the sam
 ```python
 # Your code here
 ```
-
-
-```python
-start_area_longest_ride(start_area_durations('25', data))
-```
-
-
-
-
-    7.171535114978247
-
-
-
-
-```python
-start_area_longest_ride(start_area_durations_with_dict('25', trips_dictionary))
-```
-
-
-
-
-    7.171535114978247
-
-
-
-
-```python
-
-```
