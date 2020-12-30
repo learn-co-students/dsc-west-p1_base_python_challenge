@@ -56,17 +56,18 @@ Each trip in the Scooter data consists of a `'start_community_area_number'` and 
 
 The start and end community area number are assigned to two variables below: `trip1_scan` and `trip1_ecan` respectively.
 
-## Task 1:
-Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore. 
-
-
 
 ```python
 trip1_scan = data[0]['start_community_area_number']
 trip1_ecan = data[0]['end_community_area_number']
+```
 
+## Task 1:
+Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore. 
+
+
+```python
 # Your code here
-
 ```
 
 # Ints and Floats
@@ -75,17 +76,19 @@ trip1_ecan = data[0]['end_community_area_number']
 Two string variables are defined below named `trip1_dist` and `trip1_time`. 
 
 
+```python
+trip1_dist = data[0]['trip_distance']
+trip1_time = data[0]['trip_distance']
+```
+
   - First: convert these strings to integers or floats. 
   - Second: the original units are in meters and seconds. Make a new variable, `trip_mph` which represents speed in mph.  
   
 > Hint: to convert meters to miles, divide by 1609.
 
 
-
 ```python
 # Your code here
-trip1_dist = data[0]['trip_distance']
-trip1_time = data[0]['trip_distance']
 
 trip_mpg = None
 ```
