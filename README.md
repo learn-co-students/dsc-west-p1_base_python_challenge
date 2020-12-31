@@ -22,20 +22,14 @@ Each trip in the Scooter data consists of a `'start_community_area_number'` and 
 The start and end community area number are assigned to two variables below: `trip1_scan` and `trip1_ecan` respectively.
 
 ## Task 1:
-Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore. 
+Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore for the 1st trip only.  
+
 
 
 ```python
 trip1_st_end_cn = trip1_scan + '_' + trip1_ecan
 trip1_st_end_cn
 ```
-
-
-
-
-    '15_15'
-
-
 
 # Ints and Floats
 
@@ -54,13 +48,6 @@ trip_mph = (int(trip1_dist)/1609)/(int(trip1_time)/(60*60))
 trip_mph
 ```
 
-
-
-
-    2.237414543194531
-
-
-
 # Basic List Manipulation
 
 ## Task 3
@@ -77,13 +64,6 @@ trips_area_31 = data[-30:]
 len(trips_area_31)
 ```
 
-
-
-
-    30
-
-
-
 ## Task 4
 
 Below, information associated with a new trip is defined.  Add this trip to the end of the trips_area_31 list.
@@ -99,7 +79,7 @@ trips_area_31.append(new_trip)
 
 Below is a dictionary which contains data related to a second new trip.
 
-Notice that the trip distance and trip duration are represented by strings with commas in them.  Such a format can result in errors during data procesing.
+Notice that the trip distance and trip duration are represented by strings with commas in them.  Such a format can result in errors during data processing.
 
 ## Task 5
 
@@ -147,17 +127,6 @@ for trip in trip_distances:
 short_rides[:5]
 ```
 
-
-
-
-    [1.0,
-     0.4934742075823493,
-     0.5699192044748291,
-     0.8999378495960224,
-     0.5823492852703542]
-
-
-
 ## Task 7
 
 What percentage of the total rides are less than or equal to 1 mile?
@@ -166,13 +135,6 @@ What percentage of the total rides are less than or equal to 1 mile?
 ```python
 len(short_rides)/len(trip_distances) * 100
 ```
-
-
-
-
-    52.70413573700954
-
-
 
 # Processing Two Lists at Once
 
@@ -203,17 +165,6 @@ for distance, comm_num in zip(trip_distances, start_community_areas):
 short_rides_22[:5]
 ```
 
-
-
-
-    [0.9297700435052828,
-     0.9527656929770043,
-     0.23927905531385954,
-     0.45245494095711625,
-     0.5835922933499068]
-
-
-
 ## Task 9
 
 Next, create a similar for loop, but this time create two lists simultaneously:
@@ -242,10 +193,6 @@ for distance, comm_num in zip(trip_distances, start_community_areas):
 print(short_rides_24[:5])
 print(short_rides_28[:5])
 ```
-
-    [0.07955251709136109, 0.814791796146675, 0.0, 0.7501553760099441, 0.7806090739589807]
-    [0.6668738346799254, 0.8458669981354879, 0.6830329397141082, 0.0, 0.6395276569297701]
-
 
 # Nested Dictionaries
 
