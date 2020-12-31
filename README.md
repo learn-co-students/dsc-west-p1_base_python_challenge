@@ -28,25 +28,10 @@ from data_import import load_scooter, load_trip_distance, load_start_community_a
 data = load_scooter()
 ```
 
-    The autoreload extension is already loaded. To reload it, use:
-      %reload_ext autoreload
-
-
 
 ```python
 data[0]
 ```
-
-
-
-
-    {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
-     'trip_distance': '3793',
-     'trip_duration': '1152',
-     'start_community_area_number': '15',
-     'end_community_area_number': '15'}
-
-
 
 As you see in the output from the cell above, each ride data point contains information about distance, time, and the start and end locations of the trips. 
 
@@ -63,7 +48,8 @@ trip1_ecan = data[0]['end_community_area_number']
 ```
 
 ## Task 1:
-Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore. 
+Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore for the 1st trip only.  
+
 
 
 ```python
@@ -103,9 +89,6 @@ The data list is comprised of 943 scooter rides.
 ```python
 print(f'The scooter ride list has {len(data)} elements.')
 ```
-
-    The scooter ride list has 943 elements.
-
 
 They are ordered by start_community_area_number.  The last 30 records are rides starting in community area 31.  
 Create a new list called `trips_area_31` that consists of only rides that start in area 31.
@@ -152,7 +135,7 @@ new_trip_2 = {'trip_id':'7129z00gf-2z10-4833-oof1-ca7b3a1pe212' ,
 
 ```
 
-Notice that the trip distance and trip duration are represented by strings with commas in them.  Such a format can result in errors during data procesing.
+Notice that the trip distance and trip duration are represented by strings with commas in them.  Such a format can result in errors during data processing.
 
 ## Task 5
 
@@ -222,13 +205,6 @@ In other words, the 1st element of `start_community_areas` and the 1st element o
 len(start_community_areas) == len(trip_distances)
 ```
 
-
-
-
-    True
-
-
-
 The built in [zip](https://docs.python.org/3/library/functions.html#zip) function allows you to iterate through multiple iterables at the same time.  
 Each trip through the for-loop processes elements with matching indices from the iterables passed as arguments.
 
@@ -272,9 +248,6 @@ trips_dictionary = load_trip_dictionary()
 # The trip_id of the 1st ride is used as a key below to output the 1st trip's data
 print(trips_dictionary['33b50938-5626-4124-ba57-cc0a3dd058aa'])
 ```
-
-    {'trip_distance': '3793', 'trip_duration': '1152', 'start_community_area_number': '15', 'end_community_area_number': '15'}
-
 
 ## Task 10
 
