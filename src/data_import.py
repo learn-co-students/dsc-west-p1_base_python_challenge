@@ -44,11 +44,37 @@ def load_scooter():
     
     return data
 
+def load_start_end_numbers():
+    
+    '''
+    Defining strings from community area numbers for string practice.
+    '''
+    
+    data = load_scooter()
+    
+    trip1_scan = data[0]['start_community_area_number']
+    trip1_ecan = data[0]['end_community_area_number']
+    
+    return trip1_scan, trip1_ecan
+
+def load_start_time_and_distance():
+    
+    '''
+    Defining strings from community area numbers for string practice.
+    '''
+    
+    data = load_scooter()
+    
+    trip1_dist = data[0]['trip_distance']
+    trip1_time = data[0]['trip_duration']
+    
+    return trip1_dist, trip1_time
+
 def load_trip_distance():
     
     data = load_scooter()
     
-    trip_distance = [ride['trip_distance'] for ride in data]
+    trip_distance = [int(ride['trip_distance']) for ride in data]
     
     return trip_distance
 
