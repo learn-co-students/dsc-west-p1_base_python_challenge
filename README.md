@@ -1,5 +1,5 @@
 
-# Base Python Week 1 Code Challenge
+# Base Python Week 1 Code Exercise
 
 The present code challenge will test your skills in base Python.    
 You will be asked to show your knowledge of:
@@ -24,36 +24,52 @@ sys.path.append('src')
 %load_ext autoreload
 %autoreload 2
 
-from data_import import load_scooter, load_trip_distance, load_start_community_area, load_trip_dictionary
+from data_import import load_scooter, load_start_end_numbers, load_start_time_and_distance, load_trip_distance, load_start_community_area, load_trip_dictionary
 data = load_scooter()
 ```
 
+    The autoreload extension is already loaded. To reload it, use:
+      %reload_ext autoreload
 
-```python
-data[0]
-```
 
-As you see in the output from the cell above, each ride data point contains information about distance, time, and the start and end locations of the trips. 
+# Task 1: Strings
 
-# Strings
+The data set defines where each trip starts, and where each trip ends by`'start_community_area_number'` and `'end_community_area_number'`.  
 
-Each trip in the Scooter data consists of a `'start_community_area_number'` and an `'end_community_area_number'`.  
-
-The start and end community area number are assigned to two variables below: `trip1_scan` and `trip1_ecan` respectively.
+In the cell below, you are presented with two variables containing start and end community area information for the first trip: `trip1_scan` and `trip1_ecan` respectively.
 
 
 ```python
-trip1_scan = data[0]['start_community_area_number']
-trip1_ecan = data[0]['end_community_area_number']
+trip1_scan, trip1_ecan = load_start_end_numbers()
 ```
 
-## Task 1:
-Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore for the 1st trip only.  
+
+```python
+print(trip1_scan)
+```
+
+    15
+
+
+
+```python
+print(trip1_ecan)
+```
+
+    15
+
+
+As you can see from the cell output above, the 1st trip started and ended in community area 15.
+
+
+ > Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore for the 1st trip only.  
 
 
 
 ```python
 # Your code here
+
+trip1_st_end_cn = None
 ```
 
 
@@ -63,27 +79,77 @@ trip1_st_end_cn = trip1_scan + '_' + trip1_ecan
 trip1_st_end_cn
 ```
 
-# Ints and Floats
 
-## Task 2:
+
+
+    '15_15'
+
+
+
+
+
+## Task 2: Integers and Floats
 Two string variables are defined below named `trip1_dist` and `trip1_time`. 
 
 
 ```python
-trip1_dist = data[0]['trip_distance']
-trip1_time = data[0]['trip_distance']
+trip1_dist, trip1_time = load_start_time_and_distance()
 ```
 
-  - First: convert these strings to integers or floats. 
-  - Second: the original units are in meters and seconds. Make a new variable, `trip_mph` which represents speed in mph.  
-  
-> Hint: to convert meters to miles, divide by 1609.
+The units of distance is meters.
+
+
+```python
+print(f"Trip 1 covered {trip1_dist} meters.")
+```
+
+    Trip 1 covered 3793 meters.
+
+
+Time is measured in seconds
+
+
+```python
+print(f"Trip 1 took {trip1_time} seconds")
+```
+
+    Trip 1 took 1152 seconds
+
+
+**Task 2a**: 
+ > convert both of these strings to integers using a `built in method`.
+
+
+```python
+trip1_dist_int = None
+```
+
+
+```python
+#__SOLUTION__
+trip1_dist_int = int(trip1_dist)
+```
+
+
+```python
+trip1_time_int = None
+```
+
+
+```python
+#__SOLUTION__
+trip1_time_int = int(trip1_time)
+```
+
+**Task 2b**: 
+ > create a new variable, `trip_mph`, which represents the average speed of the trip in miles per hour.  
+  > **hint** 1 mile is roughly equal to 1,609 meters.
 
 
 ```python
 # Your code here
 
-trip_mpg = None
+trip_mph = None
 ```
 
 
@@ -94,19 +160,61 @@ trip_mph = (int(trip1_dist)/1609)/(int(trip1_time)/(60*60))
 trip_mph
 ```
 
-# Basic List Manipulation
+
+
+
+    7.366765071472965
+
+
+
+# List Manipulation
 
 ## Task 3
 
-The data list is comprised of 943 scooter rides.
+Below, you are provided with a list containing all the trip distances in the original data set.  
 
 
 ```python
-print(f'The scooter ride list has {len(data)} elements.')
+trip_distances = load_trip_distance()
 ```
 
-They are ordered by start_community_area_number.  The last 30 records are rides starting in community area 31.  
-Create a new list called `trips_area_31` that consists of only rides that start in area 31.
+**Task 3a**: 
+ > Determine how many rides are in the dataset, and assign that number to the `number_of_rides` variable.
+
+
+```python
+# Your code here
+number_of_rides = None
+```
+
+
+```python
+#__SOLUTION__
+number_of_rides = len(trip_distances)
+```
+
+Although you cannot tell from the list by itself, the rides are ordered by start_community_area_number.  
+The first 7 rides correspond to rides that started in community area 15.  
+
+**Task 3b:**
+  > Create a new variable, `trips_start_15`, which holds all trip distances that start in area 15. Slice the list using indices.
+
+
+
+```python
+trips_start_15 = None
+```
+
+
+```python
+#__SOLUTION__
+trips_start_15 = trip_distances[:7]
+```
+
+The last 30 records are rides starting in community area 31.  
+
+**Task 3c:**
+  > Create a new list called `trips_area_31` that consists of only rides that start in area 31.
 
 
 ```python
@@ -120,22 +228,40 @@ trips_area_31 = None
 #__SOLUTION__
 
 trips_area_31 = data[-30:]
-len(trips_area_31)
 ```
 
-## Task 4
+**Task 3d:**
 
-Below, information associated with a new trip is defined.  Add this trip to the end of the trips_area_31 list.
+  > Add a new element to the end of the trip_distances list with the integer 1500.
 
 
 ```python
-new_trip = {'trip_id':'1149z0gf-1a10-4828-bdb9-3b7b3a23d011' , 
-                'trip_distance':'3110', 
-                'trip_duration':'1099', 
-                'start_community_area_number':'31', 
-                'end_community_area_number':'28'}
+# your code here
+```
+
+
+```python
+#__SOLUTION__
+trip_distances.append(1500)
+```
+
+## Task 4:  Basic Dictionary Manipulation
+
+The original data comes in the form of dictionaries.  The data for each trip is stored as is shown below for the first trip.
+
+
+
+```python
+trip_1 = {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
+  'trip_distance': '3793',
+  'trip_duration': '1152',
+  'start_community_area_number': '15',
+  'end_community_area_number': '15'}
 
 ```
+
+**Task 4a**: 
+  > Using key value pairs, reassign the `trip_distance` value to the integer 3793.
 
 
 ```python
@@ -145,62 +271,26 @@ new_trip = {'trip_id':'1149z0gf-1a10-4828-bdb9-3b7b3a23d011' ,
 
 ```python
 #__SOLUTION__
-trips_area_31.append(new_trip)
+trip_1['trip_distance'] = 3793
 ```
 
-`trips_area_31` should now have 31 rides in it.
-
-# Basic Dictionary Manipulation
-
-Below is a dictionary which contains data related to a second new trip.
+**Task 4b**:
+  > create a new key value pair within `trip_1` representing average speed of of trip in miles per hour.  Use `mph` as the key, and make sure the value associated with the key is a float.
 
 
 ```python
-new_trip_2 = {'trip_id':'7129z00gf-2z10-4833-oof1-ca7b3a1pe212' , 
-                'trip_distance':'4,400', 
-                'trip_duration':'2,000', 
-                'start_community_area_number':'31', 
-                'end_community_area_number':'21'}
-
-```
-
-Notice that the trip distance and trip duration are represented by strings with commas in them.  Such a format can result in errors during data processing.
-
-## Task 5
-
-Add new_trip_2 to the `trip_areas_31` list, but before doing so, reassign the value of trip distance and trip duration to values without commas: i.e. 4400 and 2000.   
-The final types should still be strings.
-You do not have to do fancy string manipulation, but you do have to assign values using **key/value** pairs.  
-Do not just fix the strings in the code block above. 
-
-
-
-
-```python
-# Your code here for fixing distance and duration
-```
-
-
-```python
-# Your code here for adding new_trip_2 to the trips_area_31 list.
+# Your code here
 ```
 
 
 ```python
 #__SOLUTION__
-new_trip_2['trip_distance'] = '4400'
-new_trip_2['trip_duration'] = '2000'
+trip_1['mph'] = (trip_1['trip_distance']/1609)/(int(trip_1['trip_duration'])/(60*60))
 ```
 
+# Task 5: For-Loops and if/else statements
 
-```python
-#__SOLUTION__
-trips_area_31.append(new_trip_2)
-```
-
-# For-Loops and if/else statements
-
-The `trip_distance` variable below is **list** of all of the rides' trip distances in their original unit (meters) and type (string).  
+Let's return to the trip_distances list, reloaded below for your convenience:
 
 
 
@@ -208,12 +298,9 @@ The `trip_distance` variable below is **list** of all of the rides' trip distanc
 trip_distances = load_trip_distance()
 ```
 
-The distances correspond to the same data in the list of dictionaries above, but the trip distances have been isolated from the other data.
+**Task 5a:**
+ > Using a **for-loop** and **if/else** statements, create a new list called `short_rides` which holds all rides less than or equal to 700 meters.   
 
-## Task 6
-
-Using a **for-loop** and **if/else** statements, create a new list called `short_rides` which holds all rides less than or equal to 1 mile.   
-To do so, you will once again have to convert to miles by dividing by 1609.
 
 
 ```python
@@ -228,190 +315,130 @@ short_rides = []
 
 for trip in trip_distances:
     
-    trip_in_miles = int(trip)/1609
-    
-    if trip_in_miles <= 1:
-        short_rides.append(trip_in_miles)
+    if trip  <= 700:
+        short_rides.append(trip)
         
-short_rides[:5]
+
 ```
 
-## Task 7
-
-What percentage of the total rides are less than or equal to 1 mile?
+**Task 5b**:
+    
+  > Add another conditional statement to the for loop above to create two lists simultaneously: `short_rides` and `long_rides`.   
+  >> `short_rides` should consist of rides less than or equal to 700 meters.  
+  >> `long_rides` should consist of rides greater than or equal to 5,000 meters.
+    
 
 
 ```python
 # Your code here
-```
+short_rides = None
+long_rides = None
 
-
-```python
-#__SOLUTION__
-len(short_rides)/len(trip_distances) * 100
-```
-
-# Processing Two Lists at Once
-
-The variable `start_community_areas` holds a list of community area numbers where each trip started.   
-
-
-```python
-start_community_areas = load_start_community_area()
-```
-
-The `start_community_areas` list and the `trip_distance` list are the same length, and are both ordered in the same way.  
-In other words, the 1st element of `start_community_areas` and the 1st element of `trip_distance` refer to the same trip.  
-
-
-```python
-len(start_community_areas) == len(trip_distances)
-```
-
-The built in [zip](https://docs.python.org/3/library/functions.html#zip) function allows you to iterate through multiple iterables at the same time.  
-Each trip through the for-loop processes elements with matching indices from the iterables passed as arguments.
-
-## Task 8
-
-Using a **for-loop** and the **zip** function, create a list called `short_rides_22` which stores all trip_distances (in miles) less than or equal to 1 mile which originated in community area 22.
-
-
-```python
-# Your code here
-
-short_rides_22 = None
 ```
 
 
 ```python
 #__SOLUTION__
 
-short_rides_22 = []
+short_rides = []
+long_rides = []
 
-for distance, comm_num in zip(trip_distances, start_community_areas):
+for trip in trip_distances:
     
-    dist_in_miles = int(distance)/1609
+    if trip  <= 700:
+        short_rides.append(trip)
     
-    if dist_in_miles <= 1 and comm_num == '22':
-        short_rides_22.append(dist_in_miles)
+    elif trip >= 5000:
+        long_rides.append(trip)
         
-short_rides_22[:5]
+
 ```
 
-## Task 9
+## Task 6: Functions
 
-Next, create a similar for loop, but this time create two lists simultaneously:
- -  the list `short_rides_24` stores all trip_distances (in miles) less than or equal to 1 mile which originated in community area 24.
- -  the list `short_rides_28` stores all trip_distances (in miles) less than or equal to 1 mile which originated in community area 28.
-
-
-
-
-```python
-short_rides_24 = None
-short_rides_28 = None
-```
-
-
-```python
-#__SOLUTION__
-
-short_rides_24 = []
-short_rides_28 = []
-
-for distance, comm_num in zip(trip_distances, start_community_areas):
-    dist_in_miles = int(distance)/1609
-    
-    if dist_in_miles <= 1 and comm_num == '24':
-        short_rides_24.append(dist_in_miles)
-    
-    elif dist_in_miles <= 1 and comm_num == '28':
-        short_rides_28.append(dist_in_miles)
-        
-    else:
-        pass
-print(short_rides_24[:5])
-print(short_rides_28[:5])
-```
-
-# Nested Dictionaries
-
-You are now presented with the rides data in a slightly different form. Instead of a list of rides, it is a dictionary.
-
-Each element in the `trips_dictionary` variable below uses the trip_id as a dictionary key, and stores the trip data associated with each key as a second dictionary.
-
-This nested, second dictionary has keys representing all the data you have come to know: trip_distance, trip_duration, start_community_area_number, and end_community_area_number.
-
-
-```python
-trips_dictionary = load_trip_dictionary()
-
-# The trip_id of the 1st ride is used as a key below to output the 1st trip's data
-print(trips_dictionary['33b50938-5626-4124-ba57-cc0a3dd058aa'])
-```
-
-## Task 10
-
-Now, loop through this new dictionary and find all rides **over 20 minutes**. 
-
-Store these rides in a dictionary called `long_rides` with trip_id's as keys and ride time in minutes as the value.
-
-Again, you will have to convert the ride durations to integers, as well as convert seconds to minutes.
+> Create a simple function named `longest_ride` which takes the a **list of integers as an argument** and **returns the value of the longest ride distance.**
 
 
 ```python
 # Your code here
-# The keys of long_rides will be trip_ids, and the values will be trip_duration in minutes
-long_rides = {}
-```
-
-
-```python
-#__SOLUTION__
-long_rides = {}
-for ride in trips_dictionary:
-
-    ride_in_minutes = int(trips_dictionary[ride]['trip_duration'])/60
-    
-    if ride_in_minutes > 20:
-        long_rides[ride] = ride_in_minutes
-
-```
-
-# Functions 
-
-## Task 11
-
-Next, create a function called `start_area_durations`, which takes two parameters:
-
-    `start_area`: a string representing the community number of a trip's start community area number.
-
-and either:
-
-    `data`: the full **list** of rides imported above.
-    or
-    `trips_dictionary`: the dictionary of rides which uses ride_id as keys.
-    
-The function should loop through the rides and select only those which start in the community area fed to it as an argument.
-
-It should **return** a list of rides, each of which is the full dictionary describing the data of the ride.
-
-> **Note** Whether you use the data variable or the trips_dictionary variable, you should get almost identical output.  
-However, using the trips_dictionary may return a list of rides which do not have ride ids.  That is acceptible. Everything else will be the same.
-
-
-
-```python
-# Your code here
-
-def start_area_durations(start_area, data):
+def longest_ride():
     pass
 ```
 
 
 ```python
 #__SOLUTION__
-def start_area_durations(start_area, data):
+def longest_ride(trip_distances):
+    
+    return max(trip_distances)
+    
+    
+```
+
+
+```python
+longest_ride(trip_distances)
+```
+
+
+
+
+    15658
+
+
+
+# Bonus task
+
+The original data comes from an API query that return a json object.  We will cover json's soon.  Below, this json object is converted to a list of dictionaries.  
+
+
+```python
+trips_list = load_scooter()
+```
+
+
+```python
+Below we see the first trip once again as accessed using the first index in the trips_dictionary.
+```
+
+
+```python
+trips_list[0]
+```
+
+
+
+
+    {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
+     'trip_distance': '3793',
+     'trip_duration': '1152',
+     'start_community_area_number': '15',
+     'end_community_area_number': '15'}
+
+
+
+Create a function called `start_area_durations`, which takes two **parameters**:
+
+    `start_area`: a string representing the community number of a trip's start community area number.
+    `trips_list`: the full **list** of rides imported above.
+    
+The function should loop through the rides and select only those which start in the community area fed to it as an argument.
+
+It should **return** a list of rides, each of which is the full dictionary describing the data of the ride.
+
+
+
+```python
+# Your code here
+
+def start_area_durations():
+    pass
+```
+
+
+```python
+#__SOLUTION__
+def start_area_durations(start_area, trips_list):
     '''
     Return all rides in a given start area.
     
@@ -428,40 +455,4 @@ def start_area_durations(start_area, data):
             community_area_rides.append(ride)
     
     return community_area_rides
-```
-
-
-```python
-#__SOLUTION__
-
-
-def start_area_durations_with_dict(start_area, trips_dictionary):
-    '''
-    Return all rides in a given start area.
-    
-    Params
-    trips_dictionary: a dictionary of rides which uses ride_id as the key
-    start_area: a string representing a community start area
-    ----
-    returns
-    community_area_rides: a list of all rides in a given community area without ride_ids.
-    '''
-    community_area_rides = []
-    for ride in trips_dictionary:
-        if trips_dictionary[ride]['start_community_area_number'] == start_area:
-            community_area_rides.append(trips_dictionary[ride])
-    
-    return community_area_rides
-```
-
-## Task 12
-
-Finally, build a second function `start_area_longest_ride` which **returns the distance in miles** of the longest ride for a given start area community number.  
-Ideally, this function will act on  the output of the function coded above.
-
-Whether you used the data list or trips_dictionary, the output should be the same.
-
-
-```python
-# Your code here
 ```
