@@ -25,12 +25,7 @@ sys.path.append('src')
 %autoreload 2
 
 from data_import import load_scooter, load_start_end_numbers, load_start_time_and_distance, load_trip_distance, load_start_community_area, load_trip_dictionary
-data = load_scooter()
 ```
-
-    The autoreload extension is already loaded. To reload it, use:
-      %reload_ext autoreload
-
 
 # Task 1: Strings
 
@@ -59,32 +54,39 @@ print(trip1_ecan)
     15
 
 
-As you can see from the cell output above, the 1st trip started and ended in community area 15.
+As you can see from the cell output above, the 1st trip started and ended in Community Area 15. Community Area 15 is named Portage Park.
 
 
- > Create a new variable, `trip1_st_end_cn` that combines the start community area and the end community area with an underscore for the 1st trip only.  
+```python
+community_area_15_name = 'Portage Park'
+```
 
+Just like numbers, strings can be joined using the `+` operator. 
+
+
+With the variables defined above - `trip1_scan`, `community_area_15_name`- and the additional variables below, construct the following sentence:
+   > "Trip 1 started in Community Area 15: Portage Park."
+
+Combine the strings using the `+` operator.
+
+
+```python
+sentence_beginning = 'Trip 1 started in Community Area '
+colon_and_space = ': '
+sentence_end_punctuation = '.'
+```
 
 
 ```python
 # Your code here
-
-trip1_st_end_cn = None
+answer_sentence = None
 ```
 
 
 ```python
 #__SOLUTION__
-trip1_st_end_cn = trip1_scan + '_' + trip1_ecan
-trip1_st_end_cn
+answer_sentence = sentence_beginning + trip1_scan + colon_and_space + community_area_15_name + sentence_end_punctuation
 ```
-
-
-
-
-    '15_15'
-
-
 
 
 
@@ -142,28 +144,28 @@ trip1_time_int = int(trip1_time)
 ```
 
 **Task 2b**: 
- > create a new variable, `trip_mph`, which represents the average speed of the trip in miles per hour.  
+ > create a new variable, `trip_distance_miles`, which represents the length of the trip in miles.  
   > **hint** 1 mile is roughly equal to 1,609 meters.
 
 
 ```python
 # Your code here
 
-trip_mph = None
+trip_distance_miles = None
 ```
 
 
 ```python
 #__SOLUTION__
 
-trip_mph = (int(trip1_dist)/1609)/(int(trip1_time)/(60*60))
-trip_mph
+trip_distance_miles = int(trip1_dist)/1609
+trip_distance_miles
 ```
 
 
 
 
-    7.366765071472965
+    2.357364822871349
 
 
 
@@ -197,8 +199,7 @@ Although you cannot tell from the list by itself, the rides are ordered by start
 The first 7 rides correspond to rides that started in community area 15.  
 
 **Task 3b:**
-  > Create a new variable, `trips_start_15`, which holds all trip distances that start in area 15. Slice the list using indices.
-
+  > Create a new variable, `trips_start_15` which contains a slice of the list corresponding to the first 7 rides.  
 
 
 ```python
@@ -211,26 +212,7 @@ trips_start_15 = None
 trips_start_15 = trip_distances[:7]
 ```
 
-The last 30 records are rides starting in community area 31.  
-
 **Task 3c:**
-  > Create a new list called `trips_area_31` that consists of only rides that start in area 31.
-
-
-```python
-# Your code here
-
-trips_area_31 = None
-```
-
-
-```python
-#__SOLUTION__
-
-trips_area_31 = data[-30:]
-```
-
-**Task 3d:**
 
   > Add a new element to the end of the trip_distances list with the integer 1500.
 
@@ -261,6 +243,7 @@ trip_1 = {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
 ```
 
 **Task 4a**: 
+  > As you can see in the cell above, trip distance is defined as a `string`.
   > Using key value pairs, reassign the `trip_distance` value to the integer 3793.
 
 
@@ -275,7 +258,7 @@ trip_1['trip_distance'] = 3793
 ```
 
 **Task 4b**:
-  > create a new key value pair within `trip_1` representing average speed of of trip in miles per hour.  Use `mph` as the key, and make sure the value associated with the key is a float.
+  > create a new key value pair within `trip_1` representing the name of the start area community name: `Portage Park` .  Use `start_area_community_name` as the key.
 
 
 ```python
@@ -285,7 +268,7 @@ trip_1['trip_distance'] = 3793
 
 ```python
 #__SOLUTION__
-trip_1['mph'] = (trip_1['trip_distance']/1609)/(int(trip_1['trip_duration'])/(60*60))
+trip_1['start_area_community_name'] = 'Portage Park'
 ```
 
 # Task 5: For-Loops and if/else statements
@@ -356,7 +339,9 @@ for trip in trip_distances:
 
 ## Task 6: Functions
 
-> Create a simple function named `longest_ride` which takes the a **list of integers as an argument** and **returns the value of the longest ride distance.**
+> Create a simple function named `longest_ride` which takes the a list of integers as a **parameter** and **returns** the largest integer.
+
+> Passing `trip_distances` as an argument to the function should result in the function returning the distance of the longest ride in meters.
 
 
 ```python
@@ -375,31 +360,16 @@ def longest_ride(trip_distances):
     
 ```
 
-
-```python
-longest_ride(trip_distances)
-```
-
-
-
-
-    15658
-
-
-
 # Bonus task
 
-The original data comes from an API query that return a json object.  We will cover json's soon.  Below, this json object is converted to a list of dictionaries.  
+The original data comes from an API query that returns a json object.  We will cover json's soon.  Below, this json object is converted to a list of dictionaries.  
 
 
 ```python
 trips_list = load_scooter()
 ```
 
-
-```python
-Below we see the first trip once again as accessed using the first index in the trips_dictionary.
-```
+We see the first trip once again as accessed using the first index in the trips_dictionary.
 
 
 ```python
@@ -417,10 +387,10 @@ trips_list[0]
 
 
 
-Create a function called `start_area_durations`, which takes two **parameters**:
+Create a function called `get_start_area_rides`, which takes two **parameters**:
 
     `start_area`: a string representing the community number of a trip's start community area number.
-    `trips_list`: the full **list** of rides imported above.
+    `trips_list`: the full **list** of rides imported above as `trips_list`
     
 The function should loop through the rides and select only those which start in the community area fed to it as an argument.
 
@@ -431,16 +401,17 @@ It should **return** a list of rides, each of which is the full dictionary descr
 ```python
 # Your code here
 
-def start_area_durations():
+def get_start_area_rides():
     pass
 ```
 
 
 ```python
 #__SOLUTION__
-def start_area_durations(start_area, trips_list):
+def get_start_area_rides(start_area, trips_list):
+    
     '''
-    Return all rides in a given start area.
+    Return a list of all rides for a given start area.
     
     Params
     data: a list of rides, each of which is a dictionary of data.
@@ -449,7 +420,9 @@ def start_area_durations(start_area, trips_list):
     returns
     community_area_rides: a list of all rides in a given community area
     '''
+    
     community_area_rides = []
+    
     for ride in data:
         if ride['start_community_area_number'] == start_area:
             community_area_rides.append(ride)
