@@ -11,7 +11,7 @@ You will be asked to show your knowledge of:
 
 You are presented with a data set describing scooter rides.  Chicago rolled out a pilot program for rentable scooters in 2019.
 
-<img src='./img/scooter_pilot.png' height='500' width='500'>
+<a href='https://data.cityofchicago.org/Transportation/E-Scooter-Trips-2019-Pilot/2kfw-zvte'> <img src='./img/scooter_pilot.png'  height='500' width='500'></a>
 
 
 ```python
