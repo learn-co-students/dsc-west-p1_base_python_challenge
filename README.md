@@ -101,7 +101,7 @@ trips_start_15 = trip_distances[:7]
 
 **Task 3c:**
 
-  > Add a new element to the end of the trip_distances list with the integer 1500.
+  > Add a new element - `the integer 1500` - to the end of the trip_distances list.
 
 
 ```python
@@ -115,7 +115,7 @@ The original data comes in the form of dictionaries.  The data for each trip is 
 
 **Task 4a**: 
   > As you can see in the cell above, trip distance is defined as a `string`.
-  > Using key value pairs, reassign the `trip_distance` value to the integer 3793.
+  > Using key value pairs, reassign the `trip_distance` value to the `integer 3793`.
 
 
 ```python
