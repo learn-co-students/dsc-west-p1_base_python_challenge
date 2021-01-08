@@ -1,4 +1,3 @@
-
 # Base Python Week 1 Code Exercise
 
 The present code challenge will test your skills in base Python.    
@@ -27,39 +26,17 @@ sys.path.append('src')
 from data_import import load_scooter, load_start_end_numbers, load_start_time_and_distance, load_trip_distance, load_start_community_area, load_trip_dictionary
 ```
 
+    The autoreload extension is already loaded. To reload it, use:
+      %reload_ext autoreload
+
+
 # Task 1: Strings
 
 The data set defines where each trip starts, and where each trip ends by`'start_community_area_number'` and `'end_community_area_number'`.  
 
 In the cell below, you are presented with two variables containing start and end community area information for the first trip: `trip1_scan` and `trip1_ecan` respectively.
 
-
-```python
-trip1_scan, trip1_ecan = load_start_end_numbers()
-```
-
-
-```python
-print(trip1_scan)
-```
-
-    15
-
-
-
-```python
-print(trip1_ecan)
-```
-
-    15
-
-
 As you can see from the cell output above, the 1st trip started and ended in Community Area 15. Community Area 15 is named Portage Park.
-
-
-```python
-community_area_15_name = 'Portage Park'
-```
 
 Just like numbers, strings can be joined using the `+` operator. 
 
@@ -71,21 +48,35 @@ Combine the strings using the `+` operator.
 
 
 ```python
-sentence_beginning = 'Trip 1 started in Community Area '
-colon_and_space = ': '
-sentence_end_punctuation = '.'
-```
+### BEGIN SOLUTION
 
 
-```python
-# Your code here
-answer_sentence = None
-```
+from test_scripts.test_class import Test
+test = Test()
 
-
-```python
-#__SOLUTION__
 answer_sentence = sentence_beginning + trip1_scan + colon_and_space + community_area_15_name + sentence_end_punctuation
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 
@@ -93,54 +84,77 @@ answer_sentence = sentence_beginning + trip1_scan + colon_and_space + community_
 ## Task 2: Integers and Floats
 Two string variables are defined below named `trip1_dist` and `trip1_time`. 
 
-
-```python
-trip1_dist, trip1_time = load_start_time_and_distance()
-```
-
 The units of distance is meters.
 
-
-```python
-print(f"Trip 1 covered {trip1_dist} meters.")
-```
-
-    Trip 1 covered 3793 meters.
-
-
 Time is measured in seconds
-
-
-```python
-print(f"Trip 1 took {trip1_time} seconds")
-```
-
-    Trip 1 took 1152 seconds
-
 
 **Task 2a**: 
  > convert both of these strings to integers using a `built in method`.
 
 
 ```python
-trip1_dist_int = None
-```
+### BEGIN SOLUTION
 
 
-```python
-#__SOLUTION__
+from test_scripts.test_class import Test
+test = Test()
+
 trip1_dist_int = int(trip1_dist)
+
+test.save()
+
+
+
+### END SOLUTION
 ```
 
 
 ```python
-trip1_time_int = None
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 
 ```python
-#__SOLUTION__
+### BEGIN SOLUTION
+
+
+from test_scripts.test_class import Test
+test = Test()
+
 trip1_time_int = int(trip1_time)
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 **Task 2b**: 
@@ -149,17 +163,21 @@ trip1_time_int = int(trip1_time)
 
 
 ```python
-# Your code here
-
-trip_distance_miles = None
-```
+### BEGIN SOLUTION
 
 
-```python
-#__SOLUTION__
+from test_scripts.test_class import Test
+test = Test()
+
 
 trip_distance_miles = int(trip1_dist)/1609
 trip_distance_miles
+
+test.save()
+
+
+
+### END SOLUTION
 ```
 
 
@@ -169,30 +187,62 @@ trip_distance_miles
 
 
 
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
+```
+
 # List Manipulation
 
 ## Task 3
 
 Below, you are provided with a list containing all the trip distances in the original data set.  
 
-
-```python
-trip_distances = load_trip_distance()
-```
-
 **Task 3a**: 
  > Determine how many rides are in the dataset, and assign that number to the `number_of_rides` variable.
 
 
 ```python
-# Your code here
-number_of_rides = None
+### BEGIN SOLUTION
+
+
+from test_scripts.test_class import Test
+test = Test()
+
+number_of_rides = len(trip_distances)
+
+test.save()
+
+
+
+### END SOLUTION
 ```
 
 
 ```python
-#__SOLUTION__
-number_of_rides = len(trip_distances)
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 Although you cannot tell from the list by itself, the rides are ordered by start_community_area_number.  
@@ -203,13 +253,35 @@ The first 7 rides correspond to rides that started in community area 15.
 
 
 ```python
-trips_start_15 = None
+### BEGIN SOLUTION
+
+
+from test_scripts.test_class import Test
+test = Test()
+
+trips_start_15 = trip_distances[:7]
+
+test.save()
+
+
+
+### END SOLUTION
 ```
 
 
 ```python
-#__SOLUTION__
-trips_start_15 = trip_distances[:7]
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 **Task 3c:**
@@ -218,13 +290,35 @@ trips_start_15 = trip_distances[:7]
 
 
 ```python
-# your code here
+### BEGIN SOLUTION
+
+
+from test_scripts.test_class import Test
+test = Test()
+
+trip_distances.append(1500)
+
+test.save()
+
+
+
+### END SOLUTION
 ```
 
 
 ```python
-#__SOLUTION__
-trip_distances.append(1500)
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 ## Task 4:  Basic Dictionary Manipulation
@@ -232,29 +326,41 @@ trip_distances.append(1500)
 The original data comes in the form of dictionaries.  The data for each trip is stored as is shown below for the first trip.
 
 
-
-```python
-trip_1 = {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
-  'trip_distance': '3793',
-  'trip_duration': '1152',
-  'start_community_area_number': '15',
-  'end_community_area_number': '15'}
-
-```
-
 **Task 4a**: 
   > As you can see in the cell above, trip distance is defined as a `string`.
   > Using key value pairs, reassign the `trip_distance` value to the `integer 3793`.
 
 
 ```python
-# Your code here
+### BEGIN SOLUTION
+
+
+from test_scripts.test_class import Test
+test = Test()
+
+trip_1['trip_distance'] = 3793
+
+test.save()
+
+
+
+### END SOLUTION
 ```
 
 
 ```python
-#__SOLUTION__
-trip_1['trip_distance'] = 3793
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 **Task 4b**:
@@ -262,13 +368,35 @@ trip_1['trip_distance'] = 3793
 
 
 ```python
-# Your code here
+### BEGIN SOLUTION
+
+
+from test_scripts.test_class import Test
+test = Test()
+
+trip_1['start_area_community_name'] = 'Portage Park'
+
+test.save()
+
+
+
+### END SOLUTION
 ```
 
 
 ```python
-#__SOLUTION__
-trip_1['start_area_community_name'] = 'Portage Park'
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 # Task 5: For-Loops and if/else statements
@@ -276,24 +404,18 @@ trip_1['start_area_community_name'] = 'Portage Park'
 Let's return to the trip_distances list, reloaded below for your convenience:
 
 
-
-```python
-trip_distances = load_trip_distance()
-```
-
 **Task 5a:**
  > Using a **for-loop** and **if/else** statements, create a new list called `short_rides` which holds all rides less than or equal to 700 meters.   
 
 
 
 ```python
-# Your code here
-short_rides = None
-```
+### BEGIN SOLUTION
 
 
-```python
-#__SOLUTION__
+from test_scripts.test_class import Test
+test = Test()
+
 short_rides = []
 
 for trip in trip_distances:
@@ -302,6 +424,28 @@ for trip in trip_distances:
         short_rides.append(trip)
         
 
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 **Task 5b**:
@@ -313,15 +457,12 @@ for trip in trip_distances:
 
 
 ```python
-# Your code here
-short_rides = None
-long_rides = None
-
-```
+### BEGIN SOLUTION
 
 
-```python
-#__SOLUTION__
+from test_scripts.test_class import Test
+test = Test()
+
 
 short_rides = []
 long_rides = []
@@ -335,6 +476,28 @@ for trip in trip_distances:
         long_rides.append(trip)
         
 
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 ## Task 6: Functions
@@ -345,47 +508,46 @@ for trip in trip_distances:
 
 
 ```python
-# Your code here
-def longest_ride():
-    pass
-```
+### BEGIN SOLUTION
 
 
-```python
-#__SOLUTION__
+from test_scripts.test_class import Test
+test = Test()
+
 def longest_ride(trip_distances):
     
     return max(trip_distances)
     
     
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 # Bonus task
 
 The original data comes from an API query that returns a json object.  We will cover json's soon.  Below, this json object is converted to a list of dictionaries.  
 
-
-```python
-trips_list = load_scooter()
-```
-
 We see the first trip once again as accessed using the first index in the trips_dictionary.
-
-
-```python
-trips_list[0]
-```
-
-
-
-
-    {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
-     'trip_distance': '3793',
-     'trip_duration': '1152',
-     'start_community_area_number': '15',
-     'end_community_area_number': '15'}
-
-
 
 Create a function called `get_start_area_rides`, which takes two **parameters**:
 
@@ -399,15 +561,12 @@ It should **return** a list of rides, each of which is the full dictionary descr
 
 
 ```python
-# Your code here
-
-def get_start_area_rides():
-    pass
-```
+### BEGIN SOLUTION
 
 
-```python
-#__SOLUTION__
+from test_scripts.test_class import Test
+test = Test()
+
 def get_start_area_rides(start_area, trips_list):
     
     '''
@@ -428,4 +587,26 @@ def get_start_area_rides(start_area, trips_list):
             community_area_rides.append(ride)
     
     return community_area_rides
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
