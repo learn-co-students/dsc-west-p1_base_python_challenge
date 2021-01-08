@@ -1,4 +1,3 @@
-
 # Base Python Week 1 Code Exercise
 
 The present code challenge will test your skills in base Python.    
@@ -30,10 +29,6 @@ from test_scripts.test_class import Test
 
 ```
 
-    The autoreload extension is already loaded. To reload it, use:
-      %reload_ext autoreload
-
-
 # Task 1: Strings
 
 The data set defines where each trip starts, and where each trip ends by`'start_community_area_number'` and `'end_community_area_number'`.  
@@ -51,16 +46,10 @@ trip1_scan, trip1_ecan = load_start_end_numbers()
 print(trip1_scan)
 ```
 
-    15
-
-
 
 ```python
 print(trip1_scan)
 ```
-
-    15
-
 
 As you can see from the cell output above, the 1st trip started and ended in Community Area 15. Community Area 15 is named Portage Park.
 
@@ -95,9 +84,6 @@ answer_sentence = sentence_beginning + trip1_scan + colon_and_space + community_
 print(answer_sentence)
 ```
 
-    Trip 1 started in Community Area 15: Portage Park.
-
-
 
 ```python
 ### BEGIN HIDDEN TESTS
@@ -124,17 +110,11 @@ trip1_dist, trip1_time = load_start_time_and_distance()
 print(f"Trip 1 covered {trip1_dist} meters.")
 ```
 
-    Trip 1 covered 3793 meters.
-
-
 
 ```python
 # Time is measured in seconds
 print(f"Trip 1 took {trip1_time} seconds")
 ```
-
-    Trip 1 took 1152 seconds
-
 
 **Task 2a**: 
  > convert both of these strings to integers using a `built in method`.
@@ -172,7 +152,7 @@ assert trip1_time_int == 1152
 
 
 ```python
-# REplace None with the appropriate code
+# Replace None with the appropriate code
 trip_distance_miles = None
 
 ### BEGIN SOLUTION
@@ -291,8 +271,6 @@ test.run_test(trips_start_15, 'trips_start_15')
 
 
 ```python
-# Your code here
-
 ### BEGIN SOLUTION
 
 trip_distances.append(1500)
@@ -333,8 +311,6 @@ trip_1 = {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
 
 
 ```python
-# Your code here
-
 ### BEGIN SOLUTION
 
 trip_1['trip_distance'] = 3793
@@ -360,8 +336,6 @@ assert trip_1['trip_distance'] == 3793
 
 
 ```python
-# Your code here
-
 ### BEGIN SOLUTION
 
 trip_1['start_area_community_name'] = 'Portage Park'
@@ -546,17 +520,6 @@ We see the first trip once again as accessed using the first index in the trips_
 trips_list[0]
 ```
 
-
-
-
-    {'trip_id': '33b50938-5626-4124-ba57-cc0a3dd058aa',
-     'trip_distance': '3793',
-     'trip_duration': '1152',
-     'start_community_area_number': '15',
-     'end_community_area_number': '15'}
-
-
-
 Create a function called `get_start_area_rides`, which takes two **parameters**:
 
     `start_area`: a string representing the community number of a trip's start community area number.
@@ -569,7 +532,7 @@ It should **return** a list of rides, each of which is the full dictionary descr
 
 
 ```python
-# Your code here
+# Fill in the function below with the appropriate code
 
 def get_start_area_rides():
     pass
